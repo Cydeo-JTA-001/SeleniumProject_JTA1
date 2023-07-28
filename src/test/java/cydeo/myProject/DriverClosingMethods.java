@@ -34,5 +34,6 @@ public class DriverClosingMethods {
         //Using quit() method we close all the windows and tabs
 
         driver1.quit();
+
     }
 }
