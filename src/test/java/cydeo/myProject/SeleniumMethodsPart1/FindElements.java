@@ -1,18 +1,28 @@
-package cydeo.myProject.LocatorsPart2;
+package cydeo.myProject.SeleniumMethodsPart1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Wait;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class XpathLocator {
+public class FindElements {
     public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://practice.cydeo.com/checkboxes");
+
+       driver.findElement(By.xpath("//input[@name=\"checbox1\"]")).click();
+
+       List <WebElement> myCheckboxes = driver.findElements(By.xpath("//*[@type=\"checkbox\"]"));
+       Thread.sleep(2000);
+       myCheckboxes.get(1).click();
+
+
+       //Please come back at 12:30
+
 
         driver.get("https://qa.nextbasecrm.com/");
 
@@ -32,30 +42,11 @@ public class XpathLocator {
 
         loginButton.click();
 
+        List <WebElement> mainMenuItems = driver.findElements(By.xpath("//span[@class='menu-item-link-text']"));
 
-        Thread.sleep(500);
+        System.out.println(mainMenuItems.size());
 
-      // locating with id attribute
-      //  WebElement activityStreamTitle = driver.findElement(By.xpath("//*[@id=\"pagetitle\"]"));
-
-        // Locating using text, it is only possible with xpath
-        WebElement activityStreamTitle = driver.findElement(By.xpath("//div[text()=\"Activity Stream\"]"));
-
-        driver.manage().window().maximize();
-
-        if(activityStreamTitle.isDisplayed()){
-            System.out.println("Congrats you are logged in");
-        }else{
-            System.out.println("check the credentials please");
-        }
-
-        // using indexes and locating one of the multiple webElements is very useful with xpath
-       // driver.findElement(By.xpath("(//span[@class=\"menu-item-link-text\"])[4]")).click();
-
-
-      // driver.quit();
-
-
+        mainMenuItems.get(4).click();
 
 
 
